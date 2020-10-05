@@ -37,8 +37,8 @@ async function getSectionData(sectionName) {
     try {
         console.log(sectionName);
 
-        document.querySelectorAll('.card').forEach(function (a) {
-            a.remove();
+        document.querySelectorAll('.card').forEach(function (ele) {
+            ele.remove();
         });
 
         //removing active class from all nav items
@@ -63,20 +63,20 @@ async function getSectionData(sectionName) {
             var colright = createEleWithClass('div', 'col-md-4');
             var divright = createEleWithClass('div', 'divImage');
             var cardBody = createEleWithClass('div', 'card-body');
-            var cardImg = createEleWithClass('img', `${sectionName}-card`);
+            var cardImg = createEleWithClass('img', `img-card img-thumbnail`);
             var imageUrl = res.multimedia[res.multimedia.length - 1].url;
             setAttributesInEle(cardImg, {
                 'src': imageUrl,
                 'width': '100%',
                 'height': '100%'
             });
-            var cardSection = createEleWithClass('h5', `card-title ${sectionName}-card`);
+            var cardSection = createEleWithClass('h5', `card-title section-card`);
             cardSection.setAttribute('style', 'color:blue;');
-            var cardTitle = createEleWithClass('h6', `card-title mb-2 ${sectionName}-card`);
-            var cardDate = createEleWithClass('h6', `card-subtitle mb-2 ${sectionName}-card`);
-            var cardAbstract = createEleWithClass('p', `card-text ${sectionName}-card`);
-            var cardItemType = createEleWithClass('h6', `card-subtitle text-muted mb-2 ${sectionName}-card`);
-            var cardByLine = createEleWithClass('h6', `card-subtitle mb-2 text-muted ${sectionName}-card`);
+            var cardTitle = createEleWithClass('h6', `card-title mb-2 title-card`);
+            var cardDate = createEleWithClass('h6', `card-subtitle mb-2 date-card`);
+            var cardAbstract = createEleWithClass('p', `card-text abstract-card`);
+            var cardItemType = createEleWithClass('h6', `card-subtitle text-muted mb-2 item-card`);
+            var cardByLine = createEleWithClass('h6', `card-subtitle mb-2 text-muted byline-card`);
             var cardContine = createEleWithClass('a', 'continueReading');
             setAttributesInEle(cardContine, {
                 'href': res.url,
@@ -87,7 +87,7 @@ async function getSectionData(sectionName) {
             cardItemType.innerHTML = res.item_type;
             cardByLine.innerHTML=res.byline;
             cardDate.innerHTML = '<small>' + res.created_date.split('T')[0] + '</small>';
-            cardAbstract.innerHTML = '<br>' + res.abstract;
+            cardAbstract.innerHTML =  res.abstract;
             cardContine.innerHTML = 'Continue reading';
 
             container.append(card);
@@ -105,6 +105,7 @@ async function getSectionData(sectionName) {
     }
 };
 
+//clicking home section by default
 document.getElementById('home').click();
 
 //creating element with classname

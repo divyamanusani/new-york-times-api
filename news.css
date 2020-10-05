@@ -18,6 +18,7 @@ body {
 .divImage{
     display:absolute;
     height:100%;
+    width:100%;
 }
 
 .card{
@@ -49,8 +50,13 @@ font-size:1.1em;
 text-align:justify;
   }
 
+  .img-thumbnail{
+      height:100%;
+  }
+
 @media only screen and (max-width:980px) {
-    img {
+    .img-thumbnail {
          padding:20px; 
+         border:none;
     }
 }
